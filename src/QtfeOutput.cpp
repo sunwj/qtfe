@@ -29,7 +29,7 @@ along with Qtfe.  If not, see <http://www.gnu.org/licenses/>.
 #include <QSpinBox>
 #include <QPainter>
 
-QtfeOutput::QtfeOutput(Qtfe* par) : par(par)
+QtfeOutput::QtfeOutput(Qtfe* par) : QWidget(par), par(par)
 {
 	R = -1;
 	B = -1;
@@ -72,10 +72,9 @@ QtfeOutput::QtfeOutput(Qtfe* par) : par(par)
 	layoutCanals->addWidget(labelA, 1, 2);
 	layoutCanals->addWidget(qspinboxA, 1, 3);
 
-	QHBoxLayout * layout = new QHBoxLayout;
+	QHBoxLayout * layout = new QHBoxLayout(this);
 	layout->addWidget(background, 5);
 	layout->addLayout(layoutCanals);
-	this->setLayout(layout);
 }
 
 void QtfeOutput::bindCanaltoR(int canal)
@@ -112,11 +111,10 @@ void QtfeOutput::bindCanaltoA(int canal)
 
 void QtfeOutput::paintEvent(QPaintEvent *event)
 {
-	QWidget::paintEvent(event);
 	QPainter painter(this);
 	painter.setRenderHint(QPainter::Antialiasing, true);
-
-	QImage image(size(), QImage::Format_ARGB32);
+	
+	QImage image(background->size(), QImage::Format_ARGB32);
 
 	for(int i=0 ; i < background->width() ; ++i)
 	{
@@ -144,4 +142,5 @@ void QtfeOutput::paintEvent(QPaintEvent *event)
 	}
 
 	painter.drawImage(background->pos(),image);
+	QWidget::paintEvent(event);
 }
