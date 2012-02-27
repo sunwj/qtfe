@@ -13,7 +13,7 @@ SOURCES += src/QtfeCanal.cpp
 SOURCES += src/QtfeOutput.cpp
 
 
-CONFIG = qt debug warn_on staticlib
+CONFIG = qt release warn_on staticlib
 QT = core gui xml
 
 MOC_DIR = .moc
