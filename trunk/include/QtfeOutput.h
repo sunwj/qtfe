@@ -26,6 +26,7 @@ along with Qtfe.  If not, see <http://www.gnu.org/licenses/>.
 
 class QSpinBox;
 class QMultiEditor;
+class Qtfe;
 
 // Warning : QtfeOutput is not supposed to be used outside Qtfe
 
