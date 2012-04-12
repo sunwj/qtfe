@@ -29,7 +29,7 @@ int main(int argc, char** argv)
 	Qtfe *editor = new Qtfe;
 
 	editor->addCanals(4);
-	editor->addOutputs(1);
+	editor->addOutputs(2);
 
 	editor->bindCanaltoOutputR(0,0);
 	editor->bindCanaltoOutputG(1,0);
